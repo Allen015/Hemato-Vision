@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prediction Result - HEMATO VISION</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            color: #1f2937;
+            margin: 0;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        main {
+            flex: 1;
+        }
+        nav {
+            background-color: #1f2937;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        nav > div {
+            max-width: 1280px; /* container mx-auto */
+            margin: 0 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            font-size: 1rem; /* text-xl, reduced from 1.5rem */
+            font-weight: 700; /* font-bold */
+            color: #ffffff; /* text-blue-600 */
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 1rem; /* space-x-4, reduced from 1.5rem */
+        }
+        nav .nav-links a {
+            color: #ffffff; /* text-gray-700 */
+            text-decoration: none;
+            font-weight:400; /* font-medium */
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        nav .nav-links a:hover {
+            color: #2563eb; /* hover:text-blue-600 */
+        }
+        nav .nav-links a.get-started {
+            padding:inherit; /* reduced from 0.5rem 1rem */
+            border-radius: 0.25rem; /* rounded */
+            color: #ffffff; /* text-gray-700 */
+        }
+        nav .nav-links a.get-started:hover {
+            color: #2563eb; /* hover:text-blue-600 */
+
+        }
+        .result {
+            background-color: #ffffff;
+            padding: 6.5rem 0;
+        }
+        .result > div {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+            text-align: center;
+        }
+        .pasted-content {
+            background-color: #ffffff;
+            border: 2px solid #d1d5db; /* Grey border for floating effect */
+            padding: 3em;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15); /* Stronger shadow */
+            border-radius: 0.75rem; /* Softer corners */
+            max-width: 600px;
+            margin: 0 auto;
+            transition: transform 0.2s ease; /* Smooth hover effect */
+        }
+        .pasted-content:hover {
+            transform: translateY(-2px); /* Slight lift for floating effect */
+        }
+        .pasted-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        .pasted-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .pasted-content p span {
+            font-weight: 600;
+            color: #2563eb;
+        }
+        .pasted-content img {
+            max-width: 400px;
+            margin: 0 auto 2rem;
+            border-radius: 0.25rem;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+            display: block;
+        }
+        .pasted-content a {
+            background-color: #2563eb;
+            color: #ffffff;
+            padding: 0.75rem 1.5rem;
+            border-radius: 0.25rem;
+            text-decoration: none;
+            font-size: 1.125rem;
+            font-weight: 600;
+            display: inline-block;
+            transition: background-color 0.2s ease, transform 0.2s ease;
+        }
+        .pasted-content a:hover {
+            background-color: #1d4ed8;
+            transform: scale(1.05);
+        }
+        footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        ::-webkit-scrollbar { display: none;}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div>
+            <h1>HEMATO VISION</h1>
+            <div class="nav-links">
+                <a href="/">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/contact">CONTACT</a>
+                <a href="/predict" class="get-started">GET STARTED</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Result Section -->
+    <main>
+        <section class="result">
+            <div>
+                <div class="pasted-content">
+                    <h2>Prediction Result</h2>
+                    <p>Predicted Blood Cell Type: <span>{{ class_label | capitalize }}</span></p>
+                    <img src="data:image/png;base64,{{ img_data }}" alt="Uploaded Blood Cell">
+                    <a href="/predict">Try Another</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Hemato Vision</p>
+    </footer>
+</body>
+</html>

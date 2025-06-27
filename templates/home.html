@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blood Cell Classifier</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <style>
+    body {
+        background-color: #f3f4f6;
+        font-family: Arial, sans-serif;
+        margin: 0;
+    }
+    nav {
+        background-color: #1f2937;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        border-bottom: 1px solid #e5e7eb;
+    }
+    nav > div {
+        max-width: 1280px;
+        margin: 0 2%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+    nav h1 {
+        font-size: 1rem;
+        font-weight: 700;
+        color: #ffffff;
+    }
+    nav .nav-links {
+        display: flex;
+        gap: 1rem;
+    }
+    nav .nav-links a {
+        color: #ffffff;
+        text-decoration: none;
+        font-weight: 400;
+        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    nav .nav-links a:hover {
+        color: #2563eb;
+    }
+    nav .nav-links a.get-started {
+        padding: inherit;
+        border-radius: 0.25rem;
+        color: #ffffff;
+    }
+    nav .nav-links a.get-started:hover {
+        color: #2563eb;
+    }
+    .hero {
+        padding: 8rem 0;
+        text-align: center;
+        min-height: 85%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        overflow: hidden;
+    }
+    .hero-bg {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-image: url('/static/images/bg3.jpg');
+        background-size: cover;
+        background-position: center;
+        z-index: -1;
+        transition: transform 0.3s ease;
+    }
+    .hero > div {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .hero h2 {
+        font-size: 2.25rem;
+        font-weight: 700;
+        color: #1f2937;
+        margin-bottom: 2rem;
+    }
+    .hero p {
+        font-size: 1.125rem;
+        color: #4b5563;
+        margin-bottom: 2rem;
+    }
+    .features {
+        background-color: #ffffff;
+        padding: 4rem 0;
+    }
+    .features > div {
+        max-width: 1280px;
+        margin: 0 auto;
+        padding: 0 1rem;
+    }
+    .features h2 {
+        font-size: 1.875rem;
+        font-weight: 700;
+        color: #1f2937;
+        text-align: center;
+        margin-bottom: 2rem;
+    }
+    .features p {
+        font-size: 1.125rem;
+        color: #4b5563;
+        text-align: center;
+        margin-bottom: 3rem;
+    }
+    .features .grid {
+        display: grid;
+        grid-template-columns: repeat(1, 1fr);
+        gap: 2rem;
+    }
+    @media (min-width: 768px) {
+        .features .grid {
+            grid-template-columns: repeat(3, 1fr);
+        }
+    }
+    .features .grid > div {
+        text-align: center;
+        padding: 0 1.5rem;
+    }
+    .features .grid > div:not(:last-child) {
+        border-right: 1px solid #242525;
+    }
+    .features .grid h3 {
+        font-size: 1.25rem;
+        font-weight: 600;
+        color: #1f2937;
+    }
+    .features .grid p {
+        margin-bottom: 0;
+        margin-top: 0.5rem;
+    }
+    .features .final-text {
+        margin-top: 2rem;
+    }
+    footer {
+        background-color: #1f2937;
+        color: #ffffff;
+        text-align: center;
+        padding: 1rem 0;
+    }
+    .button {
+        padding: 17px 40px;
+        border-radius: 50px;
+        cursor: pointer;
+        border: 0;
+        background-color: white;
+        box-shadow: rgb(0 0 0 / 5%) 0 0 8px;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        font-size: 15px;
+        transition: all 0.5s ease;
+        padding: 0.75rem 1.5rem;
+        text-decoration: none;
+        display: inline-block;
+        margin-top: 2rem;
+        font-weight: bold;
+    }
+    .button:hover {
+        letter-spacing: 4px;
+        background-color: rgb(24, 191, 220);
+        color: hsl(0, 0%, 100%);
+        box-shadow: rgb(24, 191, 220) 0px 7px 29px 0px;
+    }
+    .button:active {
+        letter-spacing: 3px;
+        background-color: hsl(24, 191, 220);
+        color: hsl(0, 0%, 100%);
+        box-shadow: rgb(24, 191, 220) 0px 0px 0px 0px;
+        transform: translateY(10px);
+        transition: 100ms;
+    }
+    .a {
+        font-weight: bold;
+    }
+    ::-webkit-scrollbar { display: none;}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div>
+            <h1>HEMATO VISION</h1>
+            <div class="nav-links">
+                <a href="/" class="a">HOME</a>
+                <a href="/about" class="a">ABOUT</a>
+                <a href="/contact" class="a">CONTACT</a>
+                <a href="/predict" class="get-started">GET STARTED</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-bg"></div>
+        <div>
+            <h2>EASY START WITH BLOOD CELL CLASSIFIER</h2>
+            <p>
+                "Blood Cell Classifier" harnesses cutting-edge convolutional neural networks to identify blood cell types with precision.
+            </p>
+            <a href="/predict" class="button">GET STARTED</a>
+        </div>
+    </section>
+
+    <!-- Features Section -->
+    <section class="features">
+        <div>
+            <h2>DISCOVER BLOOD CELL CLASSIFICATION: PATTERN SENSE UNVEILED</h2>
+            <p>
+                With advanced CNN technology, this project classifies blood cells (eosinophil, lymphocyte, monocyte, neutrophil), aiding medical diagnostics and research.
+            </p>
+            <div class="grid">
+                <div>
+                    <h3>Accurate Classification</h3>
+                    <p>Uses MobileNetV2-based CNNs to classify blood cells with high accuracy.</p>
+                </div>
+                <div>
+                    <h3>Medical Insights</h3>
+                    <p>Supports healthcare professionals with reliable blood cell identification.</p>
+                </div>
+                <div>
+                    <h3>User-Friendly Interface</h3>
+                    <p>Upload images and view results seamlessly through a web interface.</p>
+                </div>
+            </div>
+            <p class="final-text">
+                Empowered by convolutional neural networks, it simplifies blood cell analysis for research and diagnostics.
+            </p>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Hemato Vision</p>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', function() {
+            const heroBg = document.querySelector('.hero-bg');
+            const scrollY = window.scrollY;
+            const maxScale = 1.2; // Maximum zoom (20% larger)
+            const scale = Math.min(1 + scrollY * 0.0004, maxScale); // Scale up to 1.2
+            heroBg.style.transform = `scale(${scale})`;
+        });
+    </script>
+</body>
+</html>

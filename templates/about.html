@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>About - HEMATO VISION</title>
+    <link rel="icon" type="image/png" href="{{ url_for('static', filename='images/favicon.png') }}">
+    <style>
+        body {
+            background-color: #f3f4f6;
+            font-family: Arial, sans-serif;
+            margin: 0;
+            min-height: 90vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        main {
+            flex: 1;
+        }
+        nav {
+            background-color: #1f2937;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            border-bottom: 1px solid #e5e7eb;
+        }
+        nav > div {
+            max-width: 1280px; /* container mx-auto */
+            margin: 0 2%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        nav h1 {
+            font-size: 1rem; /* text-xl, reduced from 1.5rem */
+            font-weight: 700; /* font-bold */
+            color: #ffffff; /* text-blue-600 */
+        }
+        nav .nav-links {
+            display: flex;
+            gap: 1rem; /* space-x-4, reduced from 1.5rem */
+        }
+        nav .nav-links a {
+            color: #ffffff; /* text-gray-700 */
+            text-decoration: none;
+            font-weight:400; /* font-medium */
+            font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        nav .nav-links a:hover {
+            color: #2563eb; /* hover:text-blue-600 */
+        }
+        nav .nav-links a.get-started {
+            padding:inherit; /* reduced from 0.5rem 1rem */
+            border-radius: 0.25rem; /* rounded */
+            color: #ffffff; /* text-gray-700 */
+        }
+        nav .nav-links a.get-started:hover {
+            color: #2563eb; /* hover:text-blue-600 */
+
+        }
+        .about {
+            background-color: #ffffff;
+            padding: 4rem 0;
+        }
+        .about > div {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+        .pasted-content {
+            background-color: #ffffff;
+            border: 2px solid #2563eb;
+            padding: 2rem;
+            border: 2px solid #d1d5db;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-radius: 0.75rem;
+            position: relative;
+            overflow: hidden;
+        }
+        .pasted-content::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+        }
+        .pasted-content::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 6px;
+            background: linear-gradient(to right, #2563eb, #1d4ed8);
+        }
+        .pasted-content h2 {
+            font-size: 2rem;
+            font-weight: 700;
+            color: #1f2937;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            letter-spacing: 0.05em;
+        }
+        .pasted-content p {
+            font-size: 1.125rem;
+            color: #4b5563;
+            text-align: center;
+            margin-bottom: 1.5rem;
+            line-height: 1.6;
+        }
+        .pasted-content p:nth-child(2) {
+            margin-bottom: 2rem;
+        }
+        .pasted-content .grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            gap: 2rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+        @media (min-width: 768px) {
+            .pasted-content .grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        .pasted-content .grid p {
+            margin: 0;
+            color: #4b5563;
+            font-size: 1.125rem;
+            padding: 1rem;
+            background-color: #f9fafb;
+            border-radius: 0.25rem;
+            transition: transform 0.2s ease;
+        }
+        .pasted-content .grid p:hover {
+            transform: translateY(-5px);
+        }
+        footer {
+            background-color: #1f2937;
+            color: #ffffff;
+            text-align: center;
+            padding: 1rem 0;
+        }
+        .d1{
+            border: 2px solid #d1d5db;
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.15);
+            border-radius: 0.75rem;
+        }
+        ::-webkit-scrollbar { display: none;}
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div>
+            <h1>HEMATO VISION</h1>
+            <div class="nav-links">
+                <a href="/">HOME</a>
+                <a href="/about">ABOUT</a>
+                <a href="/contact">CONTACT</a>
+                <a href="/predict" class="get-started">GET STARTED</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- About Section -->
+    <main>
+        <section class="about">
+            <div>
+                <div class="pasted-content">
+                    <h2>About Blood Cell Classifier</h2>
+                    <p>
+                        Blood Cell Classifier is an innovative web application that classifies blood cell types using deep learning techniques.
+                        Powered by Convolutional Neural Networks (MobileNetV2), it aims to simplify the identification of blood cells for medical diagnostics and research.
+                    </p>
+                    <p>
+                        Whether you're a researcher or healthcare professional, Blood Cell Classifier provides an intelligent solution to analyze blood cell images with precision.
+                        Our mission is to blend technology with medical science to enhance diagnostic accuracy.
+                    </p>
+                    <div class="grid">
+                        <div class="d1">
+                            <p style="border-radius: 10%;">🌟 Fast and accurate blood cell classification</p>
+                        </div>
+                        <div class="d1">
+                            <p style="border-radius: 10%;">📊 Designed for medical researchers & professionals</p>
+                        </div>
+                        <div class="d1">
+                            <p style="border-radius: 10%;">🚀 Easy-to-use with a clean interface</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2025 Hemato Vision</p>
+    </footer>
+</body>
+</html>
